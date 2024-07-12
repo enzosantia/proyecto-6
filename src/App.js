@@ -1,5 +1,8 @@
 import logo from './logo.svg';
-import './App.css';
+import './style/App.css';
+import React from 'react'; 
+import { Link } from 'react-router-dom';
+
 
 function App() {
   return (
@@ -11,17 +14,23 @@ function App() {
         >
           no te metas <code>src/App.js</code> feo ♪
         </p>
-        <a
-          className="App-link"
-          href="src\componentes\tescomponentes.jsx"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        <Link to='./Pan2'  className='App-link'>
+          pant 2
+        </Link>
+
       </header>
     </div>
   );
 }
 
 export default App;
+
+// parte de creacion para test de componentes
+/*
+
+        <Link to="./Componentes" className="App-link" >
+        creacion lol
+        </Link>
+
+*/
