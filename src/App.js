@@ -19,6 +19,10 @@ function App() {
           pant 2
         </Link>
 
+        <Link to="./Componentes" className="App-link" >
+          creando pantalla principal 
+        </Link>
+        
       </header>
     </div>
   );
@@ -26,11 +30,3 @@ function App() {
 
 export default App;
 
-// parte de creacion para test de componentes
-/*
-
-        <Link to="./Componentes" className="App-link" >
-        creacion lol
-        </Link>
-
-*/

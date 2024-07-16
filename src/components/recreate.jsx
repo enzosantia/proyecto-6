@@ -14,6 +14,6 @@ import Stylessheet from 'react';
 
  const create = Stylessheet.create({
         comocomocomo: {
-         text-align: center;
-        },
+    
+        }
     });
