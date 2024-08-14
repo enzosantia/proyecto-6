@@ -1,33 +1,42 @@
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-export const Piee  = () => {
-    const styles = {
-        pie: {
-          backgroundColor: '#333',
-          color: '#fff',
-          padding: '10px',
-          textAlign: 'center',
-          position: 'fixed',
-          bottom: 0,
-          width: '100%',
-        },
-      };
+export const Piee = () => {
+  return (
+    <View style={styles.pie}>
+      <View style={styles.mencion} >
+      <Text style={styles.titulo}>CREADORES</Text>
+        <View style={styles.text}>
+        <Text>nombre</Text>
+        <Text>mombre</Text>
+        </View>
+      </View>
+      <View style={styles.imagenes}>
+        <Text>imagen</Text>
+        <Text>imagen</Text>
+        <Text>imagen</Text>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  pie: {
+    backgroundColor: '#333',
+    color: '#fff',
+    padding: 10,
+    display: 'flex',
+  },
+  mencion: {
     
-    return (
-        <div style = {styles.pie} >
-            <h1>
-                CREADORES
-            </h1>
-            <p>
-                nombre
-            </p>
-            <p>
-                mombre
-            </p>
+  },
+  titulo: {
 
-        </div>
-    )
-}
-
-
-
+  },
+  text: {
+    
+  },
+  imagenes: {
+    alignItems: 'flex-end',
+  },
+});

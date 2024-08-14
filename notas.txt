@@ -1,5 +1,0 @@
-rot es para los servidores remotos 
-
-
-npm install react-router-dom
-elemento utilizado para los links
