@@ -1,18 +1,21 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Pan2 from '../pages/paj2';
+
+import registro from '../components/rejister';
+import Login from "../pages/ingreso";
 
 const Stack = createStackNavigator();
 
-const rout = () => {
+const Rout = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="pan2" component={Pan2} />
+      <Stack.Screen name="Logueo" component={Login} />
+      <Stack.Screen name="Logueo" component={registro} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default rout;
+export default Rout;

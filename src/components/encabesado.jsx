@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 export const Encab = () => {
   return (
     <View style={styles.cab}>
-      
       <Text style={styles.logo}> LOGO </Text>
       <Text style={styles.nombre}>nombre de la APP</Text>
     </View>

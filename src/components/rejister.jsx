@@ -1,53 +1,49 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Image, TextInput, Alert } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 
 import appFirebase from '../../credenciales';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
-export default function Login(props)   
- {
+export default function Registro(props) {
 
-    //variables de estado
+  //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-    //funcion asincrona
+  //funcion asincrona
   const login = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      Alert.alert('Initiating', 'Accessing...'); 
-      props.navigation.navigate('Pantallaprincipal'); 
+      await createUserWithEmailAndPassword(auth, email, password);
+      props.console.prom('cuenta creada')
     } catch (error) {
       console.error(error);
+      Alert.alert('Error','invalido');
     }
   };
 
   return (
     <View style={styles.papa}>
       <View style={styles.cuerpo}>
+        
         <View style={styles.caja}>
-          <TextInput
-            placeholder='correo@gmail.com'
-            style={{ paddingHorizontal: 15 }}
-            onChangeText={(text) => setEmail(text)}
-          />
-        </View>
-        <View style={styles.caja}>   
 
-          <TextInput
-            placeholder='Password'
-            secureTextEntry={true}
-            style={{ paddingHorizontal: 15 }}
-            onChangeText={(text) => setPassword(text)}
-          />
+          <TextInput placeholder='Correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)}/>
+
+        </View>
+        
+        <View style={styles.caja}>
+
+          <TextInput placeholder='Contraseña' secureTextEntry={true} style={{ paddingHorizontal: 15 }} onChangeText={(text) => setPassword(text)}/>
+
         </View>
 
-        <View style={styles.botonContenedor}>   
+        <View style={styles.botonContenedor}>
 
           <TouchableOpacity style={styles.boton} onPress={login}>
-            <Text style={styles.textBoton}>Sign In</Text>
+            <Text style={styles.textBoton}>Registrase</Text>
           </TouchableOpacity>
+
         </View>
       </View>
     </View>
@@ -81,10 +77,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginVertical: 10,
   },
-  botonContenedor: { 
+  botonContenedor: {
     alignItems: 'center',
   },
-  boton: { 
+  boton: {
     backgroundColor: '#525FE1',
     borderRadius: 30,
     paddingVertical: 20,
