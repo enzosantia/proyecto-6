@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, Image, TextInput, Alert } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
 
-import appFirebase from '../../credenciales';
+import appFirebase from '../../Credenciales';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
 const imagen = { uri: 'https://i.pinimg.com/736x/a4/6e/fd/a46efd6651e00b47106de378a467f320.jpg' };
 
+
 export default function Login(props) {
+  const reg =() => {
+  props.navigation.navigate('Registro');
+  }
+
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,8 +31,9 @@ export default function Login(props) {
   };
 
   return (
+    <BackgroundImage source={imagen} style={styles.img}>
     <View style={styles.papa}>
-      <BackgroundImage source={imagen} style={styles.img}>
+      
         <View style={styles.cuerpo}>
 
           <View style={styles.caja}>
@@ -47,12 +53,12 @@ export default function Login(props) {
           </View>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Registro')}>
+        <TouchableOpacity onPress={reg}>
           <Text style={styles.textBoton}>Registrarse</Text>
         </TouchableOpacity>
 
-      </BackgroundImage>
     </View>
+    </BackgroundImage>
   );
 }
 
@@ -97,8 +103,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   img: {
-    flex: '1',
-    resizeMode: 'cover',
-    position: 'relative',
+    flex: 1,
+    resizeMode: 'center',
+    width: '100%',
+    height: '100vh',
+    justifyContent: 'center',
   },
 });

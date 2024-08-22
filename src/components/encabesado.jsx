@@ -1,11 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 export const Encab = () => {
   return (
     <View style={styles.cab}>
-      <Text style={styles.logo}> LOGO </Text>
-      <Text style={styles.nombre}>nombre de la APP</Text>
+
+      <View style={styles.botonContenedor}>
+
+        <TouchableOpacity style={styles.boton} >
+          <Text style={styles.textBoton}>AUXILIO</Text>
+        </TouchableOpacity>
+
+      </View>
+
     </View>
   );
 };
@@ -13,18 +20,18 @@ export const Encab = () => {
 const styles = StyleSheet.create({
   cab: {
     backgroundColor: '#333',
-    color: '#fff',
-    padding: 10,
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    alignItems: 'center', 
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
   },
-  logo: {
-    color: '#fff',
-    width: 50, 
-    height: 50,
+  boton: {
+    backgroundColor: '#525FE1',
+    borderRadius: 30,
+    paddingVertical: 20,
+    width: 150,
+    marginTop: 20,
   },
-  nombre: {
-    color: '#fff',
+  textBoton: {
+    textAlign: 'center',
   },
 });

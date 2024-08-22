@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 
-import appFirebase from '../../credenciales';
+import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
