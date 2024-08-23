@@ -1,4 +1,4 @@
-# Esta es una aplicación Expo :V
+# esta es una aplicación Expo :V
 
 Este es un proyecto de [Expo](https://expo.dev) creado con [`expo init`].
 
