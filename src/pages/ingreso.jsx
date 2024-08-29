@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Image, TextInput, Alert } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
 
 import appFirebase from '../../Credenciales';
@@ -10,6 +10,8 @@ const imagen = { uri: 'https://i.pinimg.com/736x/a4/6e/fd/a46efd6651e00b47106de3
 
 
 export default function Login(props) {
+  
+  //constante de navegacion
   const reg =() => {
   props.navigation.navigate('Registro');
   }
@@ -21,12 +23,12 @@ export default function Login(props) {
   //funcion asincrona
   const login = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      Alert.alert('Initiating', 'Accessing...');
+      await signInWithEmailAndPassword(auth, email, password);   
+      alert('iniciando', 'Accediendo...');
       props.navigation.navigate('Pantallaprincipal');
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'Correo/contraseña incorrectas');
+      alert('Error', 'Correo/contraseña incorrectas');
     }
   };
 
