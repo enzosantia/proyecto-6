@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 
-import { Encab } from "../components/Encabesado";
-import { Piee } from "../components/Piee";
+import { Encab } from "../Components/Encabesado";
+import { Piee } from "../Components/Piee";
 
 export default function Pan2() {
   return (
