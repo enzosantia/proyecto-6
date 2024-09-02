@@ -25,11 +25,18 @@ export default function Login(props) {
     try {
       await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
-      props.navigation.navigate('Pantallaprincipal');
+      
+      if (email === 'hola@gmail.com') {
+        props.navigation.navigate('Pantalla2'); 
+      }else{
+        props.navigation.navigate('Pantallaprincipal');
+      }
+
     } catch (error) {
       console.error(error);
-      alert('Error', 'Correo/contraseña incorrectas');
-    }
+      alert('Error','invalido');
+    } 
+      
   };
 
   return (
