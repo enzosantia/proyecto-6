@@ -1,0 +1,28 @@
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+export const Encab2 = () => {
+  return (
+    <View style={styles.cab}>
+      <Text style={styles.logo}>Logo</Text> 
+      <Text style={styles.nom}>nombre</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  cab: {
+    backgroundColor: '#333',
+    flex: 0.2,
+    flexDirection: 'row',
+  },
+  logo: {
+    color: '#fff',
+    flex: 1, 
+    fontSize: 20, 
+  },
+  nom: {
+    color: '#fff',
+    marginLeft: 'auto', 
+  },
+});

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   cab: {
     backgroundColor: '#333',
     alignItems: 'center',
-    flex: 1,
+    flex: 0.3,
     justifyContent: 'center',
   },
   boton: {
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingVertical: 20,
     width: 150,
-    marginTop: 20,
   },
   textBoton: {
     textAlign: 'center',
