@@ -10,16 +10,24 @@ export default function Registro(props) {
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setErrors] = useState({});
 
   //funcion asincrona
   const login = async () => {
+
     try {
+
       await createUserWithEmailAndPassword(auth, email, password);
       props.console.prom('cuenta creada')
+
     } catch (error) {
-      console.error(error);
-      Alert.alert('Error','invalido');
-    }
+
+      setErrors({
+        email: !email ? "El correo electrónico es obligatorio" : null,
+        password: !password ? "La contraseña es obligatoria" : password.length < 6 ? "La contraseña debe tener al menos 6 caracteres" : null,                    
+      });
+    
+    } 
   };
 
   return (
@@ -29,14 +37,22 @@ export default function Registro(props) {
         <View style={styles.caja}>
 
           <TextInput placeholder='Correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)}/>
-
+            
         </View>
-        
+
+          {error.email ? (
+            <Text style={styles.errorText}>{error.email}</Text>
+          ) : null}
+
         <View style={styles.caja}>
 
           <TextInput placeholder='Contraseña' secureTextEntry={true} style={{ paddingHorizontal: 15 }} onChangeText={(text) => setPassword(text)}/>
 
         </View>
+
+        {error.password ? (
+          <Text style={styles.errorText}>{error.password}</Text>
+        ) : null}
 
         <View style={styles.botonContenedor}>
 
@@ -89,5 +105,9 @@ const styles = StyleSheet.create({
   },
   textBoton: {
     textAlign: 'center',
+  },
+  errorText: {
+    color: "red",
+    marginBottom: 10,
   },
 });

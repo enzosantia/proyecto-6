@@ -1,15 +1,15 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 import { Encab } from "../Components/Encabezado";
-import { Piee } from "../Components/Piee";
+import { Boton } from "../Components/Boton_Pie";
 
 export default function Pan1() {
   return (
     <View style={styles.container}>
       <Encab />
       <Image source={{ uri: '../assets/LOL.png' }} style={styles.img} />
-      <Piee />
+      <Boton/>
     </View>
   );
 };

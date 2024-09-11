@@ -19,6 +19,7 @@ export default function Login(props) {
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setErrors] = useState({});
 
   //funcion asincrona
   const login = async () => {
@@ -26,15 +27,19 @@ export default function Login(props) {
       await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
       
-      if (email === 'hola@gmail.com') {
+      if (email === 'hola@gmail.com' ) {
         props.navigation.navigate('Pantalla2'); 
       }else{
         props.navigation.navigate('Pantallaprincipal');
       }
 
     } catch (error) {
-      console.error(error);
-      alert('Error','invalido');
+
+      setErrors({
+        email: !email ? "El correo electrónico es obligatorio" : null,
+        password: !password ? "La contraseña es obligatoria" : null,
+      });
+
     } 
       
   };
@@ -48,15 +53,20 @@ export default function Login(props) {
           <View style={styles.caja}>
             <TextInput placeholder='correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)} />
           </View>
+            {error.email ? (
+              <Text style={styles.errorText}>{error.email}</Text>
+            ) : null}
 
           <View style={styles.caja}>
             <TextInput placeholder='contraseña' secureTextEntry={true} style={{ paddingHorizontal: 15 }} onChangeText={(text) => setPassword(text)} />
           </View>
-
+            {error.password ? (
+               <Text style={styles.errorText}>{error.password}</Text>
+            ) : null}
           <View style={styles.botonContenedor}>
 
             <TouchableOpacity style={styles.boton} onPress={login}>
-              <Text style={styles.textBoton}>Inciar secion</Text>
+              <Text style={styles.textBoton}>Inciar session</Text>
             </TouchableOpacity>
 
           </View>
@@ -117,5 +127,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100vh',
     justifyContent: 'center',
+  },
+  errorText: {
+    color: "red",
+    marginBottom: 10,
   },
 });
