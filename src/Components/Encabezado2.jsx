@@ -4,8 +4,16 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 export const Encab2 = () => {
   return (
     <View style={styles.cab}>
-      <Text style={styles.logo}>Logo</Text> 
-      <Text style={styles.nom}>nombre</Text>
+      <View>
+      <TouchableOpacity style={styles.boton} >
+          <Text style={styles.textBoton}>Añadir Administrador</Text>
+        </TouchableOpacity>
+        </View>
+        <View>
+        <TouchableOpacity style={styles.boton} >
+          <Text style={styles.textBoton}>Eliminar Adiministrador</Text>
+        </TouchableOpacity>
+        </View>
     </View>
   );
 };
@@ -15,6 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     flex: 0.2,
     flexDirection: 'row',
+    justifyContent: 'center',    
   },
   logo: {
     color: '#fff',
@@ -24,5 +33,14 @@ const styles = StyleSheet.create({
   nom: {
     color: '#fff',
     marginLeft: 'auto', 
+  },
+  boton: {
+    backgroundColor: '#525FE1',
+    borderRadius: 30,
+    paddingVertical: 20,
+    width: 150,
+  },
+  textBoton: {
+    textAlign: 'center',
   },
 });

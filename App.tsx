@@ -13,7 +13,9 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="Logueo" component={Login} />
+        <Stack.Screen name="Logueo" component={Login} options={{
+          
+        }}/>
         <Stack.Screen name="Registro" component={Registro} />
         <Stack.Screen name="Pantallaprincipal" component={Pan1} />
         <Stack.Screen name="Pantalla2" component={Pan2} />

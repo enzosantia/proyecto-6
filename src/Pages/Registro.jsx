@@ -12,19 +12,24 @@ export default function Registro(props) {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
+  const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
+
   //funcion asincrona
   const login = async () => {
 
     try {
 
       await createUserWithEmailAndPassword(auth, email, password);
+    
       props.console.prom('cuenta creada')
+      alert('Cuenta creada, redirigiendo a inicio')
+      props.navigation.navigate('Logueo'); 
 
     } catch (error) {
 
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
-        password: !password ? "La contraseña es obligatoria" : password.length < 6 ? "La contraseña debe tener al menos 6 caracteres" : null,                    
+        password: !password ? "La contraseña es obligatoria" : !RegularPassword.test(password) ? "La contraseña debe tener 6 caracteres, sin caracteres epeciales" : null,
       });
     
     } 

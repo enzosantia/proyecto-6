@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
 import { Encab } from "../Components/Encabezado";
-import { Boton } from "../Components/Boton_Pie";
+import { Boton } from "../Components/BotonPiePan1";
 
 export default function Pan1() {
   return (

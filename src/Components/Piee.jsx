@@ -5,18 +5,14 @@ export const Piee = () => {
   return (
     <View style={styles.pie}>
       <View style={styles.mencion}>
-        <Text style={styles.titulo}>CREADORES</Text>
+        <Text style={styles.titulo}>Codigo de ayuda</Text>
         <View style={styles.cajatext}>
-          <Text style={styles.texto}>nombre</Text>
-          <Text style={styles.texto}>nombre</Text>
-          <Text style={styles.texto}>nombre</Text>
-          <Text style={styles.texto}>nombre</Text>
+          <Text style={styles.texto}>Codigo</Text>
+          
         </View>
       </View>
       <View style={styles.cajaim}>
-        <Text style={styles.imagenes}>IMAGENES</Text>
-        <Text style={styles.imagenes}>IMAGENES</Text>
-        <Text style={styles.imagenes}>IMAGENES</Text>
+        <Text style={styles.imagenes}>Datos Personas</Text>
       </View>
     </View>
   );
