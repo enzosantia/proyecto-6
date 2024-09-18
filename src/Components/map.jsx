@@ -4,7 +4,7 @@ import {
         withScripJs,
         withGoogleMaps
 
-}   from 'reac-google-maps'; 
+}   from 'react-google-maps'; 
 
     const Map = (props) => {
         return (
