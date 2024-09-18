@@ -1,13 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
-export const Encab2 = () => {
+export const Encab2 = (props) => {
+
+  const regAdmin = () => {
+    props.navigation.navigate('RegAdmin');
+  };
+  
   return (
     <View style={styles.cab}>
       <View>
-      <TouchableOpacity style={styles.boton} >
-          <Text style={styles.textBoton}>Añadir Administrador</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.boton} onPress={regAdmin}>
+            <Text style={styles.textBoton}>Registrase</Text>
+          </TouchableOpacity>
         </View>
         <View>
         <TouchableOpacity style={styles.boton} >

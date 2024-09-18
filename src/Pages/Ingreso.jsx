@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
 
 import appFirebase from '../../Credenciales';
@@ -21,25 +21,25 @@ export default function Login(props) {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
+  const comprobacion = () =>{
+    if (email === 'hola@gmail.com' ) {
+      props.navigation.navigate('Pantalla2'); 
+    }else{
+      props.navigation.navigate('Pantallaprincipal');
+    }
+  }
+
   //funcion asincrona
   const login = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
-      
-      if (email === 'hola@gmail.com' ) {
-        props.navigation.navigate('Pantalla2'); 
-      }else{
-        props.navigation.navigate('Pantallaprincipal');
-      }
-
+      comprobacion(email);
     } catch (error) {
-
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : null,
       });
-
     } 
       
   };
