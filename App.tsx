@@ -3,6 +3,8 @@ import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
+import { Image } from 'react-native';
+
 import Login from "./src/Pages/Ingreso";
 import Registro from "./src/Pages/Registro";
 import Pan1 from "./src/Pages/Pant1";
@@ -14,23 +16,21 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen
-  name="logueo"
-  component={Login}
-  options={{
-    title: 'Skibidiii',
-    headerStyle: {
-      backgroundColor: '#007BFF',  
-    },
-    headerTintColor: '#FFF',  
-    headerTitleStyle: {
-      fontWeight: 'bold', 
-    },
-  }}
-/>
-
+        <Stack.Screen name="Logueo" component={Login} options={{
+          headerTitle: () => (
+            <Image
+              source={{ uri: '../assets/favicon.png' }}
+              style={{ width: 275, height: 160 }}
+              resizeMode="contain"
+            />
+          ),
+          headerTitleAlign: 'center' , 
+          headerStyle: { backgroundColor: '#cccccc40' },
+        }}/>
         <Stack.Screen name="Registro" component={Registro} />
-        <Stack.Screen name="Pantallaprincipal" component={Pan2} />
+        <Stack.Screen name="Pantallaprincipal" component={Pan1} />
+        <Stack.Screen name="Pantalla2" component={Pan2} />
+        <Stack.Screen name="RegAdmin" component={RegistroAdmins} />
       </Stack.Navigator>
     );
   }
