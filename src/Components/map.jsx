@@ -1,21 +1,30 @@
 import React from 'react';
 import {
-        GoogleMap,
-        withScripJs,
-        withGoogleMaps
+    GoogleMap,
+    withScriptjs,
+    withGoogleMap,
+    Marker,
+    }from 'react-google-maps'; 
 
-}   from 'react-google-maps'; 
+    const Map = () => {
+        
+        const [centrar, setCentrar] = useState({ lat: -38.9648026, lng: -68.0890925 });
+        
+        const eventMapClick = (event) => {
+            setCentrar({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+        };
 
-    const Map = (props) => {
         return (
-            <GoogleMap defaultZoom={10}
-            defaultCenter={{ lat :-38.9648026 , lng :-68.0890925 }}
-            />
-        );
+            <GoogleMap
+            center={centrar}
+            onClick={eventMapClick}
+            >
+              <Marker position={center} />
+            </GoogleMap>
+        );    
+    
     };
 
-    export default withScripJs(
-        withGoogleMaps(
-            Map
-        )
-    )
+    export default WrappedMap = withScriptjs(
+        withGoogleMap((props) => <Map {...props} />)
+    );
