@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Image } from "react-native";
 
-import Map from "../Components/Map";
+import Map from "../../Map";
 import Credentials from '../../Credenciales';
 
 import { Encab } from "../Components/Encabezado";
@@ -16,8 +16,7 @@ export default function Pan1() {
     </View>
   );
 };
-/* 
-// Esto seria el tamaño del mapa y la url con la api
+/*
 const MapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${Credentials.mapsKey}`;
 
 class App extends Component {

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export const Encab2 = (props) => {
+export const Encab2 = () => {
 
-  const regAdmin = () => {
-    props.navigation.navigate('RegAdmin');
-  };
+  const navigation = useNavigation();
   
+    const regAdmin = () => {
+      navigation.navigate('RegAdmin');
+    };
+
   return (
     <View style={styles.cab}>
       <View>

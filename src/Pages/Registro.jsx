@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
-
 import { BackgroundImage } from 'react-native-elements/dist/config';
+import { useNavigation } from '@react-navigation/native';
 
 import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -11,6 +11,13 @@ const imagen = {uri: '../assets/leotut.png'};
 
 export default function Registro(props) {
 
+  //constante de navegacion
+  const navigation = useNavigation();
+  
+  const Log = () => {
+    navigation.navigate('Logueo'); 
+  };
+
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,23 +26,19 @@ export default function Registro(props) {
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
 
   //funcion asincrona
-  const login = async () => {
+  const login = async (props) => {
 
     try {
-
       await createUserWithEmailAndPassword(auth, email, password);
-    
-      props.console.prom('cuenta creada')
-      alert('Cuenta creada, redirigiendo a inicio')
-      props.navigation.navigate('Logueo'); 
-
+      alert('Cuenta creada');
+      Log(); 
     } catch (error) {
 
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : !RegularPassword.test(password) ? "La contraseña debe tener 6 caracteres, sin caracteres epeciales" : null,
       });
-    
+   
     } 
   };
 

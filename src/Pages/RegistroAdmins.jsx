@@ -5,7 +5,7 @@ import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 const firestore = getFirestore(appFirebase)
 
 export default function RegistroAdmins(props) {
@@ -25,7 +25,6 @@ export default function RegistroAdmins(props) {
       
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;   
-
       const userId = user.uid;
       
       await setDoc(doc(firestore, "Admins", userId), {
@@ -34,16 +33,16 @@ export default function RegistroAdmins(props) {
       });
       props.navigation.navigate('Login');
       props.console.prom('cuenta creada')
-      alert('Cuenta creada, redirigiendo a inicio')
+      alert('Cuenta creada')
 
     } catch (error) {
 
       console.error('Error al crear usuario:', error);
 
-      /*setErrors({
+      setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : !RegularPassword.test(password) ? "La contraseña debe tener 6 caracteres, sin caracteres epeciales" : null,
-      });*/
+      });
     
     } 
   };
