@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 
+import { BackgroundImage } from 'react-native-elements/dist/config';
+
 import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
+
+const imagen = {uri: '../assets/leotut.png'};
 
 export default function Registro(props) {
 
@@ -36,38 +40,41 @@ export default function Registro(props) {
   };
 
   return (
-    <View style={styles.papa}>
-      <View style={styles.cuerpo}>
+    <BackgroundImage source={imagen} style={styles.img}>
+      <View style={styles.papa}>
+        <View style={styles.cuerpo}>
         
-        <View style={styles.caja}>
+          <View style={styles.caja}>
 
-          <TextInput placeholder='Correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)}/>
+            <TextInput placeholder='Correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)}/>
             
-        </View>
+          </View>
 
-          {error.email ? (
-            <Text style={styles.errorText}>{error.email}</Text>
+            {error.email ? (
+              <Text style={styles.errorText}>{error.email}</Text>
+            ) : null}
+
+          <View style={styles.caja}>
+
+            <TextInput placeholder='Contraseña' secureTextEntry={true} style={{ paddingHorizontal: 15 }} onChangeText={(text) => setPassword(text)}/>
+
+          </View>
+
+          {error.password ? (
+            <Text style={styles.errorText}>{error.password}</Text>
           ) : null}
 
-        <View style={styles.caja}>
+          <View style={styles.botonContenedor}>
 
-          <TextInput placeholder='Contraseña' secureTextEntry={true} style={{ paddingHorizontal: 15 }} onChangeText={(text) => setPassword(text)}/>
+            <TouchableOpacity style={styles.boton} onPress={login}>
+              <Text style={styles.textBoton}>Registrarse</Text>
+            </TouchableOpacity>
 
-        </View>
-
-        {error.password ? (
-          <Text style={styles.errorText}>{error.password}</Text>
-        ) : null}
-
-        <View style={styles.botonContenedor}>
-
-          <TouchableOpacity style={styles.boton} onPress={login}>
-            <Text style={styles.textBoton}>Registrarse</Text>
-          </TouchableOpacity>
-
+          </View>
         </View>
       </View>
-    </View>
+    </BackgroundImage>
+
   );
 }
 
@@ -78,19 +85,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cuerpo: {
-    margin: 20,
+    margin: 15,
     backgroundColor: 'white',
-    borderRadius: 20,
-    width: '80%',
-    padding: 20,
+    borderRadius: 15,
+    width: '40%',
+    height: '55%',
+    padding: 15,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
+    opacity: 0.9,
   },
   caja: {
     paddingVertical: 20,
@@ -107,6 +116,14 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     width: 150,
     marginTop: 20,
+  },
+  img: {
+    flex: 1,
+    resizeMode: 'center',
+    width: '100%',
+    height: '100vh',
+    justifyContent: 'center',
+    
   },
   textBoton: {
     textAlign: 'center',
