@@ -1,5 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, StyleSheet, Image } from "react-native";
+
+import Map from "../Components/Map";
+import Credentials from '../../Credenciales';
 
 import { Encab } from "../Components/Encabezado";
 import { Boton } from "../Components/BotonPiePan1";
@@ -13,6 +16,32 @@ export default function Pan1() {
     </View>
   );
 };
+/* 
+// Esto seria el tamaño del mapa y la url con la api
+const MapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${Credentials.mapsKey}`;
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'React'
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Map
+          googleMapURL={MapURL}
+          containerElement={<div style={{ height: '400px' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+          loadingElement={<p>Cargando</p>}
+        />
+      </div>
+    );
+  }
+}
+*/
 
 const styles = StyleSheet.create({
   container: {

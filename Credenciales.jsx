@@ -10,7 +10,8 @@ const firebaseConfig = {
   storageBucket: "proyecto-skibidi-bd.appspot.com",
   messagingSenderId: "186612984896",
   appId: "1:186612984896:web:cdfb723db127c6c785c3a5",
-  measurementId: "G-LW87Z897FD"
+  measurementId: "G-LW87Z897FD",
+  mapsKey: "APIGOOGLEMAPS"
 };
 
 // Initialize Firebase
