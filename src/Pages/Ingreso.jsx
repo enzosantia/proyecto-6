@@ -39,6 +39,7 @@ export default function Login(props) {
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : null,
+        general: "El correo o la contraseña es incorrecta",
       });
     } 
       
@@ -63,6 +64,11 @@ export default function Login(props) {
             {error.password ? (
                <Text style={styles.errorText}>{error.password}</Text>
             ) : null}
+            
+            {error.general ? (
+              <Text style={styles.errorText}>{error.general}</Text>
+            ) : null}
+
           <View style={styles.botonContenedor}>
 
             <TouchableOpacity style={styles.boton} onPress={login}>
