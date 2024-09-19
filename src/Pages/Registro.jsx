@@ -62,7 +62,7 @@ export default function Registro(props) {
         <View style={styles.botonContenedor}>
 
           <TouchableOpacity style={styles.boton} onPress={login}>
-            <Text style={styles.textBoton}>Registrase</Text>
+            <Text style={styles.textBoton}>Registrarse</Text>
           </TouchableOpacity>
 
         </View>
