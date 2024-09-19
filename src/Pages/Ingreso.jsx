@@ -6,7 +6,7 @@ import appFirebase from '../../Credenciales';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
-const imagen = { uri: 'https://i.pinimg.com/736x/a4/6e/fd/a46efd6651e00b47106de378a467f320.jpg' };
+const imagen = { uri: '../assets/leotut.png' };
 
 
 export default function Login(props) {
@@ -66,15 +66,16 @@ export default function Login(props) {
           <View style={styles.botonContenedor}>
 
             <TouchableOpacity style={styles.boton} onPress={login}>
-              <Text style={styles.textBoton}>Inciar session</Text>
+              <Text style={styles.textBoton}>Inciar sesion</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={reg}>
+          <Text style={styles.textBoton}>Registrarse</Text>
+        </TouchableOpacity>
 
           </View>
         </View>
 
-        <TouchableOpacity onPress={reg}>
-          <Text style={styles.textBoton}>Registrarse</Text>
-        </TouchableOpacity>
+        
 
     </View>
     </BackgroundImage>
@@ -88,38 +89,46 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cuerpo: {
-    margin: 20,
+    margin: 15,
     backgroundColor: 'white',
-    borderRadius: 20,
-    width: '80%',
-    padding: 20,
+    borderRadius: 15,
+    width: '40%',
+    height: '70%',
+    padding: 15,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
+      
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
+    opacity: 0.9,
   },
   caja: {
     paddingVertical: 20,
     backgroundColor: '#cccccc40',
-    borderRadius: 30,
-    marginVertical: 10,
+    borderRadius: 20,
+    marginVertical:35,
+   
+    
   },
   botonContenedor: {
     alignItems: 'center',
-  },
-  boton: {
-    backgroundColor: '#525FE1',
-    borderRadius: 30,
-    paddingVertical: 20,
-    width: 150,
-    marginTop: 20,
+    justifyContent:'space-between',
+    flexDirection:'row',
+
   },
   textBoton: {
     textAlign: 'center',
+    backgroundColor: '#008B8B',
+    borderRadius: 15,
+    paddingVertical: 15,
+    width: 150,
+    marginTop: 15,
+    alignItems:'center',
+
   },
   img: {
     flex: 1,
@@ -127,6 +136,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100vh',
     justifyContent: 'center',
+    
   },
   errorText: {
     color: "red",

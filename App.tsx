@@ -14,13 +14,23 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="Logueo" component={Login} options={{
-          
-        }}/>
+        <Stack.Screen
+  name="logueo"
+  component={Login}
+  options={{
+    title: 'Skibidiii',
+    headerStyle: {
+      backgroundColor: '#007BFF',  
+    },
+    headerTintColor: '#FFF',  
+    headerTitleStyle: {
+      fontWeight: 'bold', 
+    },
+  }}
+/>
+
         <Stack.Screen name="Registro" component={Registro} />
-        <Stack.Screen name="Pantallaprincipal" component={Pan1} />
-        <Stack.Screen name="Pantalla2" component={Pan2} />
-        <Stack.Screen name="RegAdmin" component={RegistroAdmins} />
+        <Stack.Screen name="Pantallaprincipal" component={Pan2} />
       </Stack.Navigator>
     );
   }

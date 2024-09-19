@@ -111,8 +111,6 @@ const styles = StyleSheet.create({
   textBoton: {
     textAlign: 'center',
   },
-  errorText: {
-    color: "red",
-    marginBottom: 10,
-  },
 });
+
+
