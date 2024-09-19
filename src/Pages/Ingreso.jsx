@@ -72,7 +72,7 @@ export default function Login(props) {
           <View style={styles.botonContenedor}>
 
             <TouchableOpacity style={styles.boton} onPress={login}>
-              <Text style={styles.textBoton}>Inciar sesion</Text>
+              <Text style={styles.textBoton}>Iniciar sesion</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={reg}>
           <Text style={styles.textBoton}>Registrarse</Text>

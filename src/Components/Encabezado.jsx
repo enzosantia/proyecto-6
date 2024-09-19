@@ -5,7 +5,7 @@ export const Encab = () => {
   return (
     <View style={styles.cab}>
       <Text style={styles.logo}>Logo</Text> 
-      <Text style={styles.nom}>nombre</Text>
+      <Text style={styles.nom}>Nombre</Text>
     </View>
   );
 };

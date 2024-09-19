@@ -11,12 +11,12 @@ export const Encab2 = (props) => {
     <View style={styles.cab}>
       <View>
       <TouchableOpacity style={styles.boton} onPress={regAdmin}>
-            <Text style={styles.textBoton}>Registrase</Text>
+            <Text style={styles.textBoton}>Registrarse</Text>
           </TouchableOpacity>
         </View>
         <View>
         <TouchableOpacity style={styles.boton} >
-          <Text style={styles.textBoton}>Eliminar Adiministrador</Text>
+          <Text style={styles.textBoton}>Eliminar Administrador</Text>
         </TouchableOpacity>
         </View>
     </View>
