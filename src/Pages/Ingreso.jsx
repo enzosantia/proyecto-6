@@ -21,12 +21,11 @@ export default function Login(props) {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
+
+  //validacion de formato email
   const comprobacion = () =>{
-    if (email === 'hola@gmail.com' ) {
-      props.navigation.navigate('Pantalla2'); 
-    }else{
-      props.navigation.navigate('Pantallaprincipal');
-    }
+    (email === 'hola@gmail.com')? props.navigation.navigate('Pantalla2'): props.navigation.navigate('Pantallaprincipal');
+    
   }
 
   //funcion asincrona
@@ -45,6 +44,7 @@ export default function Login(props) {
       
   };
 
+  // construccion de form
   return (
     <BackgroundImage source={imagen} style={styles.img}>
     <View style={styles.papa}>

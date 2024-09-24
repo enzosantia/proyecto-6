@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+//constrccion del encabezado de pagina
 export const Encab = () => {
   return (
     <View style={styles.cab}>

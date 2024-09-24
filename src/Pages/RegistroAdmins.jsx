@@ -16,12 +16,14 @@ export default function RegistroAdmins(props) {
   const [error, setErrors] = useState({});
   const [rol, setRol] = ('admin');
 
+  // validacion de formato de password
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
 
   //funcion asincrona
   const login = async () => {
 
     try {
+      //espera al creado del usuario
       
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;   
@@ -36,7 +38,7 @@ export default function RegistroAdmins(props) {
       alert('Cuenta creada')
 
     } catch (error) {
-
+      // caso de errores
       console.error('Error al crear usuario:', error);
 
       setErrors({
@@ -82,6 +84,8 @@ export default function RegistroAdmins(props) {
     </View>
   );
 }
+
+//estilados
 
 const styles = StyleSheet.create({
   papa: {
