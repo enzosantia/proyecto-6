@@ -20,6 +20,8 @@ export const Boton = () => {
   );
 };
 
+
+//estilados
 const styles = StyleSheet.create({
   cab: {
     backgroundColor: '#333',

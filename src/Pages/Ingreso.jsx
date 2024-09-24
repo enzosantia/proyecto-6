@@ -29,6 +29,7 @@ export default function Login(props) {
   }
 
   //funcion asincrona
+  //validacion de inicio de sesion
   const login = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);   
@@ -87,7 +88,7 @@ export default function Login(props) {
     </BackgroundImage>
   );
 }
-
+//estilados
 const styles = StyleSheet.create({
   papa: {
     flex: 1,

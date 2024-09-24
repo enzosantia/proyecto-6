@@ -82,7 +82,7 @@ export default function RegistroAdmins(props) {
         </View>
       </View>
     </View>
-  );
+  );   
 }
 
 //estilados
