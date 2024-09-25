@@ -28,7 +28,6 @@ export const Encab2 = () => {
 };
 
 //estilados
-
 const styles = StyleSheet.create({
   cab: {
     backgroundColor: '#333',

@@ -26,7 +26,7 @@ export default function Registro(props) {
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
 
   //funcion asincrona
-  const login = async (props) => {
+  const login = async () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);

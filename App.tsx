@@ -38,7 +38,17 @@ export default function App() {
           headerTitleAlign: 'center' , 
           headerStyle: { backgroundColor: '#cccccc40' },
         }}/>
-        <Stack.Screen name="Pantallaprincipal" component={Pan1} />
+        <Stack.Screen name="Pantallaprincipal" component={Pan1} options={{
+          headerTitle: () => (
+            <Image
+              source={{ uri: '../assets/favicon.png' }}
+              style={{ width: 275, height: 160 }}
+              resizeMode="contain"
+            />
+          ),
+          headerTitleAlign: 'center' , 
+          headerStyle: { backgroundColor: '#cccccc40' },
+        }}/>
         <Stack.Screen name="Pantalla2" component={Pan2} />
         <Stack.Screen name="RegAdmin" component={RegistroAdmins} />
       </Stack.Navigator>

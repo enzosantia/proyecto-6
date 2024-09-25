@@ -8,7 +8,6 @@ const auth = getAuth(appFirebase);
 
 const imagen = { uri: '../assets/leotut.png' };
 
-
 export default function Login(props) {
   
   //constante de navegacion
@@ -21,11 +20,9 @@ export default function Login(props) {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
-
   //validacion de formato email
   const comprobacion = () =>{
     (email === 'hola@gmail.com')? props.navigation.navigate('Pantalla2'): props.navigation.navigate('Pantallaprincipal');
-    
   }
 
   //funcion asincrona
@@ -88,6 +85,7 @@ export default function Login(props) {
     </BackgroundImage>
   );
 }
+
 //estilados
 const styles = StyleSheet.create({
   papa: {

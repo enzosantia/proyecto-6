@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-
 // construccion del boton
 
 export const Boton = () => {
@@ -19,7 +18,6 @@ export const Boton = () => {
     </View>
   );
 };
-
 
 //estilados
 const styles = StyleSheet.create({

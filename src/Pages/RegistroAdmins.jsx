@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -10,11 +11,19 @@ const firestore = getFirestore(appFirebase)
 
 export default function RegistroAdmins(props) {
 
+  //constante de navegacion
+  const navigation = useNavigation();
+  
+  const pan2 = () => {
+    navigation.navigate('Pantalla2'); 
+  };
+
+
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
-  const [rol, setRol] = ('admin');
+  const [rol, setRol] = useState(false);
 
   // validacion de formato de password
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
@@ -26,16 +35,16 @@ export default function RegistroAdmins(props) {
       //espera al creado del usuario
       
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;   
+      const user = userCredential.user;
       const userId = user.uid;
       
-      await setDoc(doc(firestore, "Admins", userId), {
+      await setDoc(doc(firestore, "Admins" , userId), {
         email: email,
-        role: rol
+        admin: true,
       });
-      props.navigation.navigate('Login');
-      props.console.prom('cuenta creada')
-      alert('Cuenta creada')
+
+      alert('Cuenta creada');
+      pan2();
 
     } catch (error) {
       // caso de errores
