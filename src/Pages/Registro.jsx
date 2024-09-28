@@ -9,15 +9,11 @@ const auth = getAuth(appFirebase);
 
 const imagen = {uri: '../assets/leotut.png'};
 
-export default function Registro(props) {
+export default function Registro() {
 
   //constante de navegacion
   const navigation = useNavigation();
   
-  const Log = () => {
-    navigation.navigate('Logueo'); 
-  };
-
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +27,7 @@ export default function Registro(props) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       alert('Cuenta creada');
-      Log(); 
+      navigation.navigate('Logueo'); 
     } catch (error) {
 
       setErrors({

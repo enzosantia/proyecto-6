@@ -9,21 +9,15 @@ const auth = getAuth(appFirebase);
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 const firestore = getFirestore(appFirebase)
 
-export default function RegistroAdmins(props) {
+export default function RegistroAdmins() {
 
   //constante de navegacion
   const navigation = useNavigation();
-  
-  const pan2 = () => {
-    navigation.navigate('Pantalla2'); 
-  };
-
 
   //variables de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
-  const [rol, setRol] = useState(false);
 
   // validacion de formato de password
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
@@ -32,8 +26,8 @@ export default function RegistroAdmins(props) {
   const login = async () => {
 
     try {
+
       //espera al creado del usuario
-      
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       const userId = user.uid;
@@ -44,9 +38,10 @@ export default function RegistroAdmins(props) {
       });
 
       alert('Cuenta creada');
-      pan2();
+      navigation.navigate('Pantalla2'); 
 
     } catch (error) {
+
       // caso de errores
       console.error('Error al crear usuario:', error);
 

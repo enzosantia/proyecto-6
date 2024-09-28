@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
+import { useNavigation } from '@react-navigation/native';
 
 import appFirebase from '../../Credenciales';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 const auth = getAuth(appFirebase);
+const firestore = getFirestore();
 
 const imagen = { uri: '../assets/leotut.png' };
 
 export default function Login(props) {
+export default function Login() {
   
   //constante de navegacion
+  const navigation = useNavigation();
+  
   const reg =() => {
-  props.navigation.navigate('Registro');
+  navigation.navigate('Registro');
   }
 
   //variables de estado
@@ -20,18 +26,35 @@ export default function Login(props) {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
-  //validacion de formato email
-  const comprobacion = () =>{
-    (email === 'hola@gmail.com')? props.navigation.navigate('Pantalla2'): props.navigation.navigate('Pantallaprincipal');
+  //validacion de Usuario admin
+  const comprobacion = async (user) => {
+    try {
+    const docRef = doc(firestore, `Admins/${user.uid}`);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      const isAdmin = userData.admin;
+
+      if (isAdmin) {
+        navigation.navigate('Pantalla2');
+      }
+    }else {
+      navigation.navigate('Pantallaprincipal'); 
+    }
+    }catch (error) {
+      setErrors({ general: "Error al comprobar el usuario." });
+    }
   }
 
   //funcion asincrona
   //validacion de inicio de sesion
   const login = async () => {
+    setErrors({}) //se restablece el seteo de errores
     try {
-      await signInWithEmailAndPassword(auth, email, password);   
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
-      comprobacion(email);
+      await comprobacion(userCredential.user);
     } catch (error) {
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
