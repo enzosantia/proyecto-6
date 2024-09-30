@@ -11,12 +11,10 @@ const firestore = getFirestore();
 
 const imagen = { uri: '../assets/leotut.png' };
 
-export default function Login(props) {
 export default function Login() {
   
   //constante de navegacion
   const navigation = useNavigation();
-  
   const reg =() => {
   navigation.navigate('Registro');
   }
@@ -43,7 +41,8 @@ export default function Login() {
       navigation.navigate('Pantallaprincipal'); 
     }
     }catch (error) {
-      setErrors({ general: "Error al comprobar el usuario." });
+      console.error('error de usuario')
+      //setErrors({ general: "Error al comprobar el usuario." });
     }
   }
 
