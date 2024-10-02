@@ -1,13 +1,17 @@
+//constantes importadas de react native y react base
 import React, { Component } from "react";
 import { View, StyleSheet, Image } from "react-native";
 
+//pimportacion de mapas
 import Map from "../../Map";
 import Credentials from '../../Credenciales';
 // import MapView, {Marker, Polyline} from 'react-native-maps';
 
+//importacion de componentes externos
 import { Encab } from "../Components/Encabezado";
 import { Boton } from "../Components/BotonPiePan1";
 
+//duncion que exporta por defecto la pantalla
 export default function Pan1() {
   return (
     <View style={styles.container}>
@@ -53,7 +57,7 @@ export default function Pan1() {
     </View>
 */
 
-
+//estylos
 const styles = StyleSheet.create({
   container: {
     flex: 1,

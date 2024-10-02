@@ -48,6 +48,7 @@ export default function App() {
           ),
           headerTitleAlign: 'center' , 
           headerStyle: { backgroundColor: '#cccccc40' },
+          headerLeft: () => null,
         }}/>
         <Stack.Screen name="Pantalla2" component={Pan2} />
         <Stack.Screen name="RegAdmin" component={RegistroAdmins} />

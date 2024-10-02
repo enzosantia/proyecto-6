@@ -1,165 +1,51 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
-import { BackgroundImage } from 'react-native-elements/dist/config';
+/*import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 
-import appFirebase from '../../Credenciales';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-const auth = getAuth(appFirebase);
-const firestore = getFirestore();
+const AdministratorsScreen = () => {
+  const [administrators, setAdministrators] = useState([]);
+  const [selectedAdministrator, setSelectedAdministrator] = useState(null);
 
-const imagen = { uri: '../assets/leotut.png' };
+  useEffect(() => {
+    // Llamar a la API para obtener la lista de administradores
+    fetch('https://api.example.com/administrators')
+      .then(response => response.json())
+      .then(data => setAdministrators(data));
+  }, []);
 
-export default function Login(props) {
-  
-  //constante de navegacion
-  const reg =() => {
-  props.navigation.navigate('Registro');
-  }
-
-  //variables de estado
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setErrors] = useState({});
-
-  //validacion de Usuario admin
-  const comprobacion = async (user) => {
-    const docRef = doc(firestore, `Admins/${user.uid}`);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-      const admin = userData.admin;
-
-      if (admin) {
-        props.navigation.navigate('Pantalla2');
-      } else {
-        props.navigation.navigate('Pantallaprincipal');
-      }
-    }
-  }
-
-  //funcion asincrona
-  //validacion de inicio de sesion
-  const login = async () => {
-    setError({}) //se restablece el seteo de errores
-    try {
-      await signInWithEmailAndPassword(auth, email, password);   
-      alert('iniciando', 'Accediendo...');
-      await comprobacion(userCredential.user);
-    } catch (error) {
-      setErrors({
-        email: !email ? "El correo electrónico es obligatorio" : null,
-        password: !password ? "La contraseña es obligatoria" : null,
-        general: "El correo o la contraseña es incorrecta",
-      });
-    } 
-      
+  const handleSelectAdministrator = (administrator) => {
+    setSelectedAdministrator(administrator);
   };
 
-  // construccion de form
+  const handleDeleteAdministrator = () => {
+    // Llamar a la API para eliminar el administrador seleccionado
+    fetch(`https://api.example.com/administrators/${selectedAdministrator.id}`, {
+      method: 'DELETE',
+    })
+      .then(response => response.json())
+      .then(() => {
+        // Actualizar la lista de administradores
+        setAdministrators(administrators.filter((admin) => admin.id !== selectedAdministrator.id));
+        setSelectedAdministrator(null);
+      });
+  };
+
   return (
-    <BackgroundImage source={imagen} style={styles.img}>
-    <View style={styles.papa}>
-      
-        <View style={styles.cuerpo}>
-
-          <View style={styles.caja}>
-            <TextInput placeholder='correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)} />
-          </View>
-            {error.email ? (
-              <Text style={styles.errorText}>{error.email}</Text>
-            ) : null}
-
-          <View style={styles.caja}>
-            <TextInput placeholder='contraseña' secureTextEntry={true} style={{ paddingHorizontal: 15 }} onChangeText={(text) => setPassword(text)} />
-          </View>
-            {error.password ? (
-               <Text style={styles.errorText}>{error.password}</Text>
-            ) : null}
-            
-            {error.general ? (
-              <Text style={styles.errorText}>{error.general}</Text>
-            ) : null}
-
-          <View style={styles.botonContenedor}>
-
-            <TouchableOpacity style={styles.boton} onPress={login}>
-              <Text style={styles.textBoton}>Iniciar sesion</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={reg}>
-          <Text style={styles.textBoton}>Registrarse</Text>
+    <View>
+      <FlatList
+        data={administrators}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => handleSelectAdministrator(item)}>
+            <Text>{item.name}</Text>
+          </TouchableOpacity>
+        )}
+      />
+      {selectedAdministrator && (
+        <TouchableOpacity onPress={handleDeleteAdministrator}>
+          <Text>Eliminar {selectedAdministrator.name}</Text>
         </TouchableOpacity>
-
-          </View>
-        </View>
-
-        
-
+      )}
     </View>
-    </BackgroundImage>
   );
-}
+};
 
-//estilados
-const styles = StyleSheet.create({
-  papa: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cuerpo: {
-    margin: 15,
-    backgroundColor: 'white',
-    borderRadius: 15,
-    width: '40%',
-    height: '70%',
-    padding: 15,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-      
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5,
-    opacity: 0.9,
-  },
-  caja: {
-    paddingVertical: 20,
-    backgroundColor: '#cccccc40',
-    borderRadius: 20,
-    marginVertical:35,
-   
-    
-  },
-  botonContenedor: {
-    alignItems: 'center',
-    justifyContent:'space-between',
-    flexDirection:'row',
-
-  },
-  textBoton: {
-    textAlign: 'center',
-    backgroundColor: '#008B8B',
-    borderRadius: 15,
-    paddingVertical: 15,
-    width: 150,
-    marginTop: 15,
-    alignItems:'center',
-
-  },
-  img: {
-    flex: 1,
-    resizeMode: 'center',
-    width: '100%',
-    height: '100vh',
-    justifyContent: 'center',
-    
-  },
-  errorText: {
-    color: "red",
-    marginBottom: 10,
-  },
-});
+export default AdministratorsScreen;*/

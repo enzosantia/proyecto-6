@@ -1,20 +1,27 @@
+//constantes importadas de react native y react base
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
+
+//inportando conponentes de navgacion
 import { useNavigation } from '@react-navigation/native';
 
+//se inportan componentes de firebase
 import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+//se inicializa firebase
+const firestore = getFirestore(appFirebase)
+//se inicializada una autenticacion de la info de firebase
 const auth = getAuth(appFirebase);
 
-import { getFirestore, doc, setDoc } from "firebase/firestore";
-const firestore = getFirestore(appFirebase)
-
+//funcion que se expportara como conponente dinal al APP
 export default function RegistroAdmins() {
 
-  //constante de navegacion
+  //constante de navegacion entre pantallas
   const navigation = useNavigation();
 
-  //variables de estado
+  //variables de estado que guardan informacion
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
@@ -22,29 +29,33 @@ export default function RegistroAdmins() {
   // validacion de formato de password
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
 
-  //funcion asincrona
+  //funcion asincrona de logueo
   const login = async () => {
 
     try {
 
-      //espera al creado del usuario
+      //espera al creado del usuario, almacena informacion corespondiente en variables y ademas balida informacion de los mismos
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       const userId = user.uid;
       
+      //setea la informacion de los usuarios validandolos como admins en la base de datos en la coleccion (Admins)
       await setDoc(doc(firestore, "Admins" , userId), {
         email: email,
         admin: true,
       });
 
+      //alertas y navegaciones si se cumplen las condiciones previas
       alert('Cuenta creada');
       navigation.navigate('Pantalla2'); 
 
+      // caso de errores
     } catch (error) {
 
-      // caso de errores
+      //mensaje de error en la consola
       console.error('Error al crear usuario:', error);
 
+      //se envia informacion a la bariable de estado de error
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : !RegularPassword.test(password) ? "La contraseña debe tener 6 caracteres, sin caracteres epeciales" : null,
@@ -56,7 +67,7 @@ export default function RegistroAdmins() {
   return (
     <View style={styles.papa}>
       <View style={styles.cuerpo}>
-        
+      
         <View style={styles.caja}>
 
           <TextInput placeholder='Correo@gmail.com' style={{ paddingHorizontal: 15 }} onChangeText={(text) => setEmail(text)}/>
