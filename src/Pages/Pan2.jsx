@@ -17,6 +17,7 @@ export default function Pan2() {
   );
 };
 
+//estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,

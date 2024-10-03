@@ -1,14 +1,22 @@
+//se importan componentes de react y react native
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
+
+//se importa react navigation
 import { useNavigation } from '@react-navigation/native';
 
+//se importan componentes de firebase
 import appFirebase from '../../Credenciales';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-const auth = getAuth(appFirebase);
-const firestore = getFirestore();
 
+//se inicializa firebase
+const firestore = getFirestore(appFirebase)
+//se inicializada una autenticacion de la info de firebase
+const auth = getAuth(appFirebase);
+
+//se inporta una imagen
 const imagen = { uri: '../assets/leotut.png' };
 
 export default function Login() {
@@ -19,27 +27,33 @@ export default function Login() {
   navigation.navigate('Registro');
   }
 
-  //variables de estado
+  //variables de estado que guardan informacion
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
-  //validacion de Usuario admin
+  //validacion de Usuario admin como funcion asyncrona
   const comprobacion = async (user) => {
+    //se busca dentro del servidor la seccion Admins y se balida el user ID de la misma
     try {
     const docRef = doc(firestore, `Admins/${user.uid}`);
+    //se realiza un get de la misma informacion como promesa
     const docSnap = await getDoc(docRef);
 
+    //se valida si la informacion existe
     if (docSnap.exists()) {
       const userData = docSnap.data();
       const isAdmin = userData.admin;
 
+      //si el usuario es admind true
       if (isAdmin) {
         navigation.navigate('Pantalla2');
       }
+      //si el usuario no es admind true
     }else {
       navigation.navigate('Pantallaprincipal'); 
     }
+    //caso de error
     }catch (error) {
       console.error('error de usuario')
       //setErrors({ general: "Error al comprobar el usuario." });
@@ -51,10 +65,14 @@ export default function Login() {
   const login = async () => {
     setErrors({}) //se restablece el seteo de errores
     try {
+      //se inicia secion bajo una promesa
       const userCredential = await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
+      //se llama a la funcion de comprobacion enviando la constante userCredential y la credencial unser
       await comprobacion(userCredential.user);
     } catch (error) {
+      
+      //casos de error
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : null,
@@ -64,7 +82,7 @@ export default function Login() {
       
   };
 
-  // construccion de form
+  // construccion del form
   return (
     <BackgroundImage source={imagen} style={styles.img}>
     <View style={styles.papa}>
@@ -108,7 +126,7 @@ export default function Login() {
   );
 }
 
-//estilados
+//estilos
 const styles = StyleSheet.create({
   papa: {
     flex: 1,

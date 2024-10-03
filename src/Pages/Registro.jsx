@@ -1,12 +1,19 @@
+//constantes importadas de react native y react base
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
+
+//importamos react navigation
 import { useNavigation } from '@react-navigation/native';
 
+//se importan componentes de firebase
 import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+//se inicializada una autenticacion de la info de firebase
 const auth = getAuth(appFirebase);
 
+//importacion de imagen
 const imagen = {uri: '../assets/leotut.png'};
 
 export default function Registro() {
@@ -14,22 +21,28 @@ export default function Registro() {
   //constante de navegacion
   const navigation = useNavigation();
   
-  //variables de estado
+  //variables de estado que guardan informacion
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
+  // validacion de formato de password
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
 
   //funcion asincrona
   const login = async () => {
 
     try {
+      //se crea un usuario
       await createUserWithEmailAndPassword(auth, email, password);
+
+      //alerta de usuario creado y se redirecciona
       alert('Cuenta creada');
       navigation.navigate('Logueo'); 
+
     } catch (error) {
 
+      //mensajes de error
       setErrors({
         email: !email ? "El correo electrónico es obligatorio" : null,
         password: !password ? "La contraseña es obligatoria" : !RegularPassword.test(password) ? "La contraseña debe tener 6 caracteres, sin caracteres epeciales" : null,
@@ -38,6 +51,7 @@ export default function Registro() {
     } 
   };
 
+  // construccion del form
   return (
     <BackgroundImage source={imagen} style={styles.img}>
       <View style={styles.papa}>
@@ -77,6 +91,7 @@ export default function Registro() {
   );
 }
 
+//estilos
 const styles = StyleSheet.create({
   papa: {
     flex: 1,

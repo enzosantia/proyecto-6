@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
 
-//inportando conponentes de navgacion
+//importando conponentes de navgacion
 import { useNavigation } from '@react-navigation/native';
 
-//se inportan componentes de firebase
+//se importan componentes de firebase
 import appFirebase from '../../Credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
@@ -15,7 +15,7 @@ const firestore = getFirestore(appFirebase)
 //se inicializada una autenticacion de la info de firebase
 const auth = getAuth(appFirebase);
 
-//funcion que se expportara como conponente dinal al APP
+//funcion que se expportara como conponente final al APP
 export default function RegistroAdmins() {
 
   //constante de navegacion entre pantallas
@@ -29,7 +29,7 @@ export default function RegistroAdmins() {
   // validacion de formato de password
   const RegularPassword = /^(?=.*\d)(?=.*[a-zA-Z])[A-Za-z\d]{6,}$/;
 
-  //funcion asincrona de logueo
+  //funcion asincrona
   const login = async () => {
 
     try {
@@ -64,6 +64,7 @@ export default function RegistroAdmins() {
     } 
   };
 
+  // construccion del form
   return (
     <View style={styles.papa}>
       <View style={styles.cuerpo}>
@@ -101,7 +102,6 @@ export default function RegistroAdmins() {
 }
 
 //estilados
-
 const styles = StyleSheet.create({
   papa: {
     flex: 1,

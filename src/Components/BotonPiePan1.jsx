@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 // construccion del boton
-
 export const Boton = () => {
   return (
     <View style={styles.cab}>

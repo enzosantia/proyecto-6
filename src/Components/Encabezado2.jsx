@@ -10,7 +10,6 @@ export const Encab2 = () => {
       navigation.navigate('RegAdmin');
     };
 
-    // inputs de inicio
   return (
     <View style={styles.cab}>
       <View>
