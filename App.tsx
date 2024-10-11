@@ -7,8 +7,8 @@ import { Image } from 'react-native';
 
 import Login from "./src/Pages/Ingreso";
 import Registro from "./src/Pages/Registro";
-import Pan1 from "./src/Pages/Pant1";
-import Pan2 from "./src/Pages/Pan2"; 
+import Pan1 from "./src/Pages/PantUsuarios";
+import Pan2 from "./src/Pages/PanAdmins"; 
 import RegistroAdmins from "./src/Pages/RegistroAdmins";
 
 export default function App() {
