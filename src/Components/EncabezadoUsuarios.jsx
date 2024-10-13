@@ -5,8 +5,8 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 export const Encab = () => {
   return (
     <View style={styles.cab}>
-      <Text style={styles.logo}>Logo</Text> 
-      <Text style={styles.nom}>Nombre</Text>
+      <Text style={styles.logo}>Perfil</Text> 
+      <Text style={styles.nom}>Ajustes</Text>
     </View>
   );
 };
@@ -14,17 +14,15 @@ export const Encab = () => {
 //estilados
 const styles = StyleSheet.create({
   cab: {
-    backgroundColor: '#333',
     flex: 0.2,
     flexDirection: 'row',
   },
   logo: {
-    color: '#fff',
+    
     flex: 1, 
     fontSize: 20, 
   },
   nom: {
-    color: '#fff',
     marginLeft: 'auto', 
   },
 });

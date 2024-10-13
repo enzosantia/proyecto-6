@@ -14,8 +14,10 @@ import AdministratorsScreen from "./src/Pages/ModificacionAdmins";
 
 export default function App() {
 
-  //se establece una medida general para un cierto tipo de foto 
+  //obtiene las dimencions de la pantalla
   const { width, height } = Dimensions.get('window');
+
+  //establese dimenciones predefinidas paara esos componentes
   const ancho = width * 0.2; 
   const alto = height * 0.1;
 
