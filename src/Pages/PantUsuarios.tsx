@@ -8,7 +8,7 @@ import Credentials from '../../Credenciales';
 // import MapView, {Marker, Polyline} from 'react-native-maps';
 
 //importacion de componentes externos
-import { Encab } from "../Components/Encabezado";
+import { Encab } from "../Components/EncabezadoUsuarios";
 import { Boton } from "../Components/BotonPiePan1";
 
 //duncion que exporta por defecto la pantalla

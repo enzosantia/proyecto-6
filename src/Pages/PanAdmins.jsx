@@ -3,7 +3,7 @@ import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
 //importacion de componentes externos
-import { Encab2 } from "../Components/Encabezado2";
+import { Encab2 } from "../Components/EncabezadoAdmins";
 import { Piee } from "../Components/Piee";
 
 //funcion a exportar con el contenido de la pantalla 2

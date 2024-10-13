@@ -9,17 +9,20 @@ export const Encab2 = () => {
     const regAdmin = () => {
       navigation.navigate('RegAdmin');
     };
+    const modAdmis = () => {
+      navigation.navigate('ModAdmins');
+    }
 
   return (
     <View style={styles.cab}>
       <View>
-      <TouchableOpacity style={styles.boton} onPress={regAdmin}>
+          <TouchableOpacity style={styles.boton} onPress={regAdmin}>
             <Text style={styles.textBoton}>Registrarse</Text>
           </TouchableOpacity>
         </View>
         <View>
-        <TouchableOpacity style={styles.boton} >
-          <Text style={styles.textBoton}>Eliminar Administrador</Text>
+        <TouchableOpacity style={styles.boton} onPress={modAdmis}>
+          <Text style={styles.textBoton}>Modificar Administrador</Text>
         </TouchableOpacity>
         </View>
     </View>
