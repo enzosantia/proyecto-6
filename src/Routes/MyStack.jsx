@@ -20,7 +20,7 @@ export default function MyStack() {
   const Stack = createStackNavigator();
     return (
       <Stack.Navigator>
-         <Stack.Screen name="Logueo" component={Login} options={{
+          <Stack.Screen name="Logueo" component={Login} options={{
           headerTitle: () => (
             <Image
               source={{ uri: '../assets/favicon.png' }}

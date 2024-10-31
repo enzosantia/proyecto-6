@@ -68,6 +68,7 @@ export default function Login() {
       //se inicia secion bajo una promesa
       const userCredential = await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
+      navigation.navigate('Pantallaprincipal'); 
       //se llama a la funcion de comprobacion enviando la constante userCredential y la credencial unser
       await comprobacion(userCredential.user);
     } catch (error) {
