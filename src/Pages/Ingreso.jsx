@@ -32,6 +32,20 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState({});
 
+  //funcion para recuperar contraseña
+  const handlePasswordReset = async () => {
+    if (!email) {
+      Alert.alert("Error", "Por favor ingresa tu correo electrónico.");
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      Alert.alert("Éxito", "Se ha enviado un correo para restablecer la contraseña.");
+    } catch (error) {
+      Alert.alert("Error", error.message || "Hubo un problema. Intenta de nuevo.");
+    }
+  }
+
   //validacion de Usuario admin como funcion asyncrona
   const comprobacion = async (user) => {
     //se busca dentro del servidor la seccion Admins y se balida el user ID de la misma
