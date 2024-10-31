@@ -127,6 +127,9 @@ export default function Login() {
             <TouchableOpacity style={styles.boton} onPress={login}>
               <Text style={styles.textBoton}>Iniciar sesion</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.boton} onPress={handlePasswordResetw}>
+              <Text style={styles.textBoton}>Recuperar contraseña</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={reg}>
           <Text style={styles.textBoton}>Registrarse</Text>
         </TouchableOpacity>
