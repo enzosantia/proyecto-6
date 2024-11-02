@@ -6,13 +6,11 @@ import { BackgroundImage } from 'react-native-elements/dist/config';
 //se importa react navigation
 import { useNavigation } from '@react-navigation/native';
 
+import { comprobacion } from '../Script/VerificacionIngreso';
+
 //se importan componentes de firebase
 import appFirebase from '../../Credenciales';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-
-//se inicializa firebase
-const firestore = getFirestore(appFirebase)
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 //se inicializada una autenticacion de la info de firebase
 const auth = getAuth(appFirebase);
 
@@ -46,34 +44,6 @@ export default function Login() {
     }
   }
 
-  //validacion de Usuario admin como funcion asyncrona
-  const comprobacion = async (user) => {
-    //se busca dentro del servidor la seccion Admins y se balida el user ID de la misma
-    try {
-    const docRef = doc(firestore, `Usuarios/${user.uid}`);
-    //se realiza un get de la misma informacion como promesa
-    const docSnap = await getDoc(docRef);
-
-    //se valida si la informacion existe
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-      const isAdmin = userData.admin;
-
-      //si el usuario es admind true
-      if (isAdmin) {
-        navigation.navigate('Pantalla2');
-      }
-      //si el usuario no es admind true
-    }else {
-      navigation.navigate('Pantallaprincipal'); 
-    }
-    //caso de error
-    }catch (error) {
-      console.error('error de usuario')
-      //setErrors({ general: "Error al comprobar el usuario." });
-    }
-  }
-
   //funcion asincrona
   //validacion de inicio de sesion
   const login = async () => {
@@ -83,7 +53,7 @@ export default function Login() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
       //se llama a la funcion de comprobacion enviando la constante userCredential y la credencial unser
-      await comprobacion(userCredential.user);
+      await comprobacion(userCredential.user, navigation);
     } catch (error) {
       
       //casos de error

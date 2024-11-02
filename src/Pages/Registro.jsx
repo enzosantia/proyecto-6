@@ -37,7 +37,7 @@ export default function Registro() {
 
     try {
 
-      //espera al creado del usuario, almacena informacion corespondiente en variables y ademas balida informacion de los mismos
+      /*//espera al creado del usuario, almacena informacion corespondiente en variables y ademas balida informacion de los mismos
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       const userId = user.uid;
@@ -46,9 +46,10 @@ export default function Registro() {
       await setDoc(doc(firestore, "Usuarios" , userId), {
         email: email,
         usuario: true,
-      });
+      });*/
 
       //alerta de usuario creado y se redirecciona
+      await createUserWithEmailAndPassword(auth, email, password);
       alert('Cuenta creada');
       navigation.navigate('Logueo'); 
 
