@@ -50,7 +50,7 @@ export default function Login() {
   const comprobacion = async (user) => {
     //se busca dentro del servidor la seccion Admins y se balida el user ID de la misma
     try {
-    const docRef = doc(firestore, `Admins/${user.uid}`);
+    const docRef = doc(firestore, `Usuarios/${user.uid}`);
     //se realiza un get de la misma informacion como promesa
     const docSnap = await getDoc(docRef);
 
@@ -82,7 +82,6 @@ export default function Login() {
       //se inicia secion bajo una promesa
       const userCredential = await signInWithEmailAndPassword(auth, email, password);   
       alert('iniciando', 'Accediendo...');
-      navigation.navigate('Pantallaprincipal'); 
       //se llama a la funcion de comprobacion enviando la constante userCredential y la credencial unser
       await comprobacion(userCredential.user);
     } catch (error) {
@@ -126,15 +125,14 @@ export default function Login() {
 
             <TouchableOpacity style={styles.boton} onPress={login}>
               <Text style={styles.textBoton}>Iniciar sesion</Text>
-            </TouchableOpacity>
-           <TouchableOpacity style={styles.boton} onPress={handlePasswordReset}>
-              <Text style={styles.textBoton}>Recuperar contraseña</Text>
             </TouchableOpacity> 
             <TouchableOpacity onPress={reg}>
-          <Text style={styles.textBoton}>Registrarse</Text>
-        </TouchableOpacity>
-
+              <Text style={styles.textBoton}>Registrarse</Text>
+            </TouchableOpacity>
           </View>
+          <TouchableOpacity style={styles.botonReset} onPress={handlePasswordReset}>
+            <Text style={styles.resetText}>Recuperar contraseña</Text>
+          </TouchableOpacity>
         </View>
 
         
@@ -205,4 +203,15 @@ const styles = StyleSheet.create({
     color: "red",
     marginBottom: 10,
   },
+  botonReset: {
+    alignSelf: 'center',
+    marginTop: 10,
+    paddingVertical: 5,
+  },
+  resetText: {
+    color: '#007AFF',
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
+
 });

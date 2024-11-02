@@ -40,7 +40,7 @@ export default function RegistroAdmins() {
       const userId = user.uid;
       
       //setea la informacion de los usuarios validandolos como admins en la base de datos en la coleccion (Admins)
-      await setDoc(doc(firestore, "Admins" , userId), {
+      await setDoc(doc(firestore, "Usuarios" , userId), {
         email: email,
         admin: true,
       });
