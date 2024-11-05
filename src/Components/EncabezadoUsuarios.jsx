@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Image, Modal, Text } from 'react-native';
 
-export const Encab = () => {
+export const Encab = ({ darkMode, toggleDarkMode }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(null);
-  const [darkMode, setDarkMode] = useState(false); // Estado para el modo oscuro
 
   const toggleModal = (menu) => {
     setSelectedMenu(menu);
     setModalVisible(!modalVisible);
-  };
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode); // Alternar entre modo oscuro y modo claro
   };
 
   return (
@@ -123,11 +118,5 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: '#fff', // Color del texto del botón cerrar
     fontWeight: 'bold',
-  },
-  darkMenu: {
-    backgroundColor: '#333', // Fondo del menú en modo oscuro
-  },
-  darkMenuText: {
-    color: '#fff', // Color del texto en modo oscuro
   },
 });
