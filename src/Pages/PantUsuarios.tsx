@@ -5,6 +5,7 @@ import { View, StyleSheet, Image } from "react-native";
 import { Encab } from "../Components/EncabezadoUsuarios";
 import { Boton } from "../Components/BotonPiePan1";
 
+
 // función que exporta por defecto la pantalla
 const Pan1 = () => {
   const [darkMode, setDarkMode] = useState(false); // Estado para el modo oscuro

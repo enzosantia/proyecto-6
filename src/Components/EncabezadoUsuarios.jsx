@@ -10,6 +10,10 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
     setModalVisible(!modalVisible);
   };
 
+  const login = () => {
+    navigation.navigate('Logueo');
+  }
+
   return (
     <View style={[styles.container, darkMode ? styles.darkContainer : styles.lightContainer]}>
       {/* Menú de usuario */}
@@ -34,8 +38,8 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
           <View style={styles.menu}>
             {selectedMenu === 'user' && (
               <>
-                <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
-                  <Text style={styles.menuText}>Cerrar sesión</Text>
+                <TouchableOpacity onPress={login} style={styles.menuItem}>
+                  <Text style={styles.menuText} >Cerrar sesión</Text>
                 </TouchableOpacity>
               </>
             )}
