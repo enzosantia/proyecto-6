@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native';
-import { Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import appFirebase from '../../Credenciales';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
