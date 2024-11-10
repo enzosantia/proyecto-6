@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from "react-native";
 // importación de componentes externos
 import { Encab } from "../Components/EncabezadoUsuarios";
 import { Boton } from "../Components/BotonPiePan1";
-
+import Mapa from "../Components/Map";
 
 // función que exporta por defecto la pantalla
 const Pan1 = () => {
@@ -17,7 +17,7 @@ const Pan1 = () => {
   return (
     <View style={[styles.container, darkMode ? styles.darkContainer : styles.lightContainer]}>
       <Encab darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Image source={{ uri: '../assets/LOL.png' }} style={styles.img} />
+      <Mapa/>
       <Boton />
     </View>
   );

@@ -5,13 +5,14 @@ import { View, StyleSheet, Image } from "react-native";
 //importacion de componentes externos
 import { Encab2 } from "../Components/EncabezadoAdmins";
 import { Piee } from "../Components/Piee";
+import Mapa from "../Components/Map";
 
 //funcion a exportar con el contenido de la pantalla 2
 export default function Pan2() {
   return (
     <View style={styles.container}>
       <Encab2 />
-      <Image source={{ uri: '../assets/Lucas_uwu.png' }} style={styles.img} />
+      <Mapa/>
       <Piee />
     </View>
   );
