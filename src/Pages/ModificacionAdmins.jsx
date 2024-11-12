@@ -6,6 +6,8 @@ import appFirebase from '../../Credenciales';
 import { getAuth, sendPasswordResetEmail, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 
+import Swal from 'sweetalert2';
+
 // Inicializa Firestore y Auth usando las credenciales de Firebase
 const firestore = getFirestore(appFirebase);
 const auth = getAuth(appFirebase);
@@ -22,7 +24,7 @@ export default function ModAdmins() {
   const resetPassword = async () => {
     try {
       await sendPasswordResetEmail(auth, email); // Envía el correo de restablecimiento
-      alert('Se ha enviado un correo para restablecer la contraseña');
+      Swal.fire('Se ha enviado un correo para restablecer la contraseña');
     } catch (error) {
       console.error('Error al restablecer contraseña:', error);
       setErrors({ general: "Error al restablecer la contraseña" });

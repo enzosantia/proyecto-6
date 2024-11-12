@@ -5,7 +5,7 @@ import { View, StyleSheet, Image } from "react-native";
 //importacion de componentes externos
 import { Encab2 } from "../Components/EncabezadoAdmins";
 import { Piee } from "../Components/Piee";
-import MapaAdmins from "../Components/EncabezadoAdmins";
+import MapaAdmins from "../Components/MapaAdmis";
 
 //funcion a exportar con el contenido de la pantalla 2
 export default function Pan2() {
