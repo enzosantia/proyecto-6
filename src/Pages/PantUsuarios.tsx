@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Importación de componentes externos
 import { Encab } from "../Components/EncabezadoUsuarios";
 import { Boton } from "../Components/BotonPiePan1";
-import Mapa from "../Components/Map";
+import Mapa from "../Components/MapUsuarios";
 
 // Definir el tipo de datos para la ubicación
 type Ubicacion = {
@@ -83,10 +83,11 @@ const Pan1 = () => {
       <Encab darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Mapa ubicacion={ubicacion} /> {/* Pasamos `ubicacion` como prop a `Mapa` */}
       <Boton />
-      <Text style={{ color: darkMode ? '#ffffff' : '#000000' }}>{geolocalizacionTxt}</Text>
     </View>
   );
 };
+
+//<Text style={{ color: darkMode ? '#ffffff' : '#000000' }}>{geolocalizacionTxt}</Text>
 
 const styles = StyleSheet.create({
   container: {

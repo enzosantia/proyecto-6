@@ -46,7 +46,7 @@ export default function MyStack() {
           headerTitleAlign: 'center', 
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }} />
-      <Stack.Screen name="Pantallaprincipal" component={Pan1} options={{
+              <Stack.Screen name="Pantallaprincipal" component={Pan1} options={{
           headerTitle: () => (
             <Image
               source={{ uri: '../assets/favicon.png' }}

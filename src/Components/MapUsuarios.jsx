@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native'; // Agregar `Text` aquí
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import {  } from "../../assets/marker-2.png";
 
 const Mapa = ({ ubicacion }) => {
   if (!ubicacion) {
