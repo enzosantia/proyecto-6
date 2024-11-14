@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 
 // Construcción del botón
-export const Boton = () => {
+export const Boton = ({ onPress }) => {
   return (
     <View style={styles.cab}>
       <View style={styles.botonContenedor}>
-        <TouchableOpacity style={styles.boton}>
+        <TouchableOpacity style={styles.boton} onPress={onPress}>
           <Text style={styles.textBoton}>AUXILIO</Text>
         </TouchableOpacity>
       </View>
@@ -14,7 +14,7 @@ export const Boton = () => {
   );
 };
 
-//obtiene las dimencions de la pantalla
+//obtiene las dimensiones de la pantalla
 const { width, height } = Dimensions.get('window');
 
 // estilos

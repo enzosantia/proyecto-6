@@ -70,7 +70,17 @@ export default function MyStack() {
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
           headerLeft: () => null,
         }} />
-      <Stack.Screen name="RegAdmin" component={RegistroAdmins} />
+      <Stack.Screen name="RegAdmin" component={RegistroAdmins} options={{
+          headerTitle: () => (
+            <Image
+              source={{ uri: '../assets/favicon.png' }}
+              style={{ width: ancho, height: alto }}
+              resizeMode="contain"
+            />
+          ),
+          headerTitleAlign: 'center', 
+          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
+        }}/>
       <Stack.Screen name="ModAdmins" component={AdministratorsScreen} options={{
           headerTitle: () => (
             <Image

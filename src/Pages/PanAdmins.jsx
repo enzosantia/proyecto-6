@@ -1,24 +1,24 @@
-//constantes importadas de react native y react base
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { useRoute } from '@react-navigation/native'; 
 
-//importacion de componentes externos
 import { Encab2 } from "../Components/EncabezadoAdmins";
 import { Piee } from "../Components/Piee";
-import MapaAdmins from "../Components/EncabezadoAdmins";
+import MapaAdmins from "../Components/MapaAdmis";
 
-//funcion a exportar con el contenido de la pantalla 2
 export default function Pan2() {
+  const route = useRoute(); 
+  const { ubicacionAuxilio } = route.params || {}; 
+
   return (
     <View style={styles.container}>
       <Encab2 />
-      <MapaAdmins/>
+      <MapaAdmins ubicacionUsuario={ubicacionAuxilio} /> 
       <Piee />
     </View>
   );
 };
 
-//estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
