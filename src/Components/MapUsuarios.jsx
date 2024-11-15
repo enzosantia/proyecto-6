@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native'; // Agregar `Text` aquí
+import { View, Text } from 'react-native';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import {  } from "../../assets/marker-2.png";
+import 'leaflet/dist/leaflet.css'
 
-const Mapa = ({ ubicacion }) => {
+export const Mapa = ({ ubicacion }) => {
   if (!ubicacion) {
     return (
       <View style={{ flex: 1 }}>
@@ -24,5 +23,3 @@ const Mapa = ({ ubicacion }) => {
     </View>
   );
 };
-
-export default Mapa;

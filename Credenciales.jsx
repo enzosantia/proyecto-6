@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -14,11 +15,11 @@ const firebaseConfig = {
   mapsKey: "APIGOOGLEMAPS"
 };
 
-// Initialize Firebase
-const appFirebase = initializeApp(firebaseConfig);
+const database = initializeApp(firebaseConfig);
+const appFirebase = getDatabase(database); // Obtener la referencia a la base de datos
 
-export default appFirebase
+export { appFirebase }
 
 /**
- *  el codigo fue copiado y pegado de la pagina oficial de firebase
+ *  el codigo fue copiado y pegado de la pagina oficial de firebase, salbo algunas pocas modificaciones como getDatabase
  */
