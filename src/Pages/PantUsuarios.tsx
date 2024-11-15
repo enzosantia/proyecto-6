@@ -9,7 +9,7 @@ import { appFirebase } from '../../Credenciales';
 // Se importan componentes
 import { Encab } from "../Components/EncabezadoUsuarios";
 import { Boton } from "../Components/BotonPiePan1";
-import {Mapa} from "../Components/MapUsuarios";
+import { Mapa } from "../Components/MapUsuarios";
 
 // Guarda la ubicasion junto con los numeros
 type Ubicacion = {
