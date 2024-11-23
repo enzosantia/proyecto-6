@@ -1,0 +1,50 @@
+from flask import Flask, jsonify, request # Un server que permite la conexion
+from flask_cors import CORS  # Importa CORS
+from pyparrot.Minidrone import Mambo
+
+app = Flask(__name__)
+CORS(app)  # Habilita CORS para todas las rutas
+
+# Inicializar el dron
+mambo = Mambo("533198", use_wifi=True)
+
+@app.route('/connect', methods=['GET'])
+def connect():
+    success = mambo.connect(num_retries=3)
+    if success:
+        mambo.smart_sleep(2)
+        mambo.ask_for_state_update()
+        return jsonify({"status": "connected"})
+    else:
+        return jsonify({"status": "failed"}), 500
+
+@app.route('/get_position', methods=['GET'])
+def get_position():
+    mambo.ask_for_state_update()
+    position = mambo.sensors.sensors_dict
+    return jsonify({"position": position})
+
+@app.route('/move_drone', methods=['POST'])
+def move_drone():
+    # Obtiene los parámetros del movimiento desde el cuerpo de la solicitud
+    data = request.json
+    roll = data.get('roll', 0)  # Movimiento lateral (izquierda/derecha)
+    pitch = data.get('pitch', 0)  # Movimiento hacia adelante/atrás
+    yaw = data.get('yaw', 0)  # Rotación
+    vertical_movement = data.get('vertical_movement', 0)  # Subir/bajar
+    duration = data.get('duration', 1)  # Duración del movimiento
+
+    # Realiza el movimiento
+    if mambo.is_connected():
+        mambo.fly_direct(roll=roll, pitch=pitch, yaw=yaw, vertical_movement=vertical_movement, duration=duration)
+        return jsonify({"status": "success", "message": "Drone moved"}), 200
+    else:
+        return jsonify({"status": "failed", "message": "Drone not connected"}), 400
+
+@app.route('/disconnect', methods=['GET'])
+def disconnect():
+    mambo.disconnect()
+    return jsonify({"status": "disconnected"})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

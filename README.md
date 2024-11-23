@@ -25,6 +25,10 @@ En el resultado, encontrará opciones para abrir la aplicación en un
 
 En el caso del emulador de Android es necesario tener Android Studio(https://developer.android.com/studio?hl=es-419#get-android-studio) o cualquier otro tipo de emulador capas de proporcionar un entorno adecuado
 
+## Conexion con el dron
+
+Este codigo esta diseñado para funcionar con un dron parrot, se construyo una API para que este se logre conectar, el codigo de la API esta en el archivo TXT para su utilizacion ( se tienen que corregir errores con la extraccion de la ubicacion en la API, este error depende del tipo de dron PARROT que se utilice )
+
 ## Para resumir
 
 - Amor, tranquilo no te voy a molestar

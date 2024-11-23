@@ -9,6 +9,8 @@ import RegistroAdmins from "../Pages/RegistroAdmins";
 import AdministratorsScreen from "../Pages/ModificacionAdmins";
 import React, { useState } from 'react';
 
+import UbicacionDRON from '../Script/Dron/UbicacionDRON'
+
 export default function MyStack() {  
   // Estado para el modo oscuro
   const [darkMode, setDarkMode] = useState(false);
@@ -93,6 +95,7 @@ export default function MyStack() {
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }}
       />
+    <Stack.Screen name="test" component={UbicacionDRON}/>
     </Stack.Navigator>
   );
 }

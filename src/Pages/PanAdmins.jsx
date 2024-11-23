@@ -10,7 +10,15 @@ import { Encab2 } from "../Components/EncabezadoAdmins";
 import { Piee } from "../Components/Piee";
 import MapaAdmins from "../Components/MapaAdmis";
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function Pan2() {
+  
+  const navigation = useNavigation();
+  const controlarDron = () => {
+    navigation.navigate('test');
+  }
+
   const [ubicacionUsuario, setUbicacionUsuario] = useState(null); // Variable de estado para la ubicación recibida
 
   useEffect(() => {
@@ -51,6 +59,7 @@ export default function Pan2() {
       <Encab2 />
       <MapaAdmins ubicacionUsuario={ubicacionUsuario} /> {/* Pasar la ubicación al mapa */}
       <Button title="Limpiar señales de auxilio" onPress={limpiarSeñalesAuxilio} /> {/* Botón para limpiar las señales */}
+      <Button title="Dron" onPress={controlarDron} /> {/* Se conecta un cotrolador para el dron */}
       <Piee />
     </View>
   );
