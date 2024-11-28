@@ -6,11 +6,20 @@ import Login from "../Pages/Ingreso";
 import Registro from "../Pages/Registro";
 import Pan1 from "../Pages/PantUsuarios";
 import Pan2 from "../Pages/PanAdmins"; 
+//se importan las pantallas a Mystack
+import Quejas from "../Pages/Quejaspan";
+import Info from "../Pages/Masinfo";
 import RegistroAdmins from "../Pages/RegistroAdmins";
 import AdministratorsScreen from "../Pages/ModificacionAdmins";
+<<<<<<< Updated upstream
 import UbicacionDRON from '../Script/Dron/UbicacionDRON';
 import Ayuda from "../Pages/Ayuda";
 import ListarAdmis from "../Pages/ListarAdmin";
+=======
+import React, { useState } from 'react';
+
+
+>>>>>>> Stashed changes
 
 export default function MyStack() {  
   // Estado para el modo oscuro
@@ -26,8 +35,8 @@ export default function MyStack() {
   const Stack = createStackNavigator();
   
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Logueo" component={Login} options={{
+    <Stack.Navigator> 
+           <Stack.Screen name="Logueo" component={Login} options={{
           headerTitle: () => (
             <Image
               source={{ uri: '../assets/favicon.png' }}
@@ -96,6 +105,7 @@ export default function MyStack() {
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }}
       />
+<<<<<<< Updated upstream
       <Stack.Screen name="test" component={UbicacionDRON} />
       <Stack.Screen name="Ayuda" component={Ayuda} options={{
           headerTitle: "Ayuda",
@@ -103,6 +113,10 @@ export default function MyStack() {
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }} />
         <Stack.Screen name="ListarAdmin" component={ListarAdmis} options={{
+=======
+      {/* se agregan stack screen en quejas*/}
+       <Stack.Screen name="Quejas" component={Quejas} options={{
+>>>>>>> Stashed changes
           headerTitle: () => (
             <Image
               source={{ uri: '../assets/favicon.png' }}
@@ -110,9 +124,26 @@ export default function MyStack() {
               resizeMode="contain"
             />
           ),
+<<<<<<< Updated upstream
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }}/>
+=======
+          headerTitleAlign: 'center', 
+          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' }, // Cambia el color de fondo según el modo
+        }} />
+           <Stack.Screen name="Info" component={Info} options={{
+          headerTitle: () => (
+            <Image
+              source={{ uri: '../assets/favicon.png' }}
+              style={{ width: ancho, height: alto }}
+              resizeMode="contain"
+            />
+          ),
+          headerTitleAlign: 'center', 
+          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' }, // Cambia el color de fondo según el modo
+        }} />
+>>>>>>> Stashed changes
     </Stack.Navigator>
   );
 }

@@ -1,37 +1,56 @@
 import React, { useState } from 'react'; 
 import { View, TouchableOpacity, StyleSheet, Image, Modal, Text } from 'react-native';
+<<<<<<< Updated upstream
 import { useNavigation } from '@react-navigation/native'; 
 import Ayuda from '../Pages/Ayuda';
+=======
+import { useNavigation } from '@react-navigation/native';
+>>>>>>> Stashed changes
 
 export const Encab = ({ darkMode, toggleDarkMode }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(null);
 
+<<<<<<< Updated upstream
   const navigation = useNavigation();
 
   // Función para alternar la visibilidad del modal y establecer el menú seleccionado.
+=======
+  // Función para alternar la visibilidad del modal y establecer el menú seleccionado
+>>>>>>> Stashed changes
   const toggleModal = (menu) => {
     setSelectedMenu(menu);
     setModalVisible(!modalVisible);
   };
-
-  // Función para navegar hacia la pantalla de loguin.
+  const navigation = useNavigation(); 
+  // Función para navegar hacia la pantalla de loguin
   const login = () => {
     navigation.navigate('Logueo');
   };
+<<<<<<< Updated upstream
 
   // Función para navegar hacia la pantalla de Ayuda.
   const goToAyuda = () => {
     navigation.navigate('Ayuda');
   };
 
+=======
+  const Quejas = () => {
+    navigation.navigate('Quejas'); 
+  };
+  const Info = () => {
+    setModalVisible(false); 
+    navigation.navigate('Info');
+  };
+>>>>>>> Stashed changes
   return (
     <View 
       style={[
         styles.container, 
-        darkMode ? styles.darkContainer : styles.lightContainer // Cambia el estilo según el modo.
+        darkMode ? styles.darkContainer : styles.lightContainer // Cambia el estilo según el modo
       ]}
     >
+
       {/* Botón del menú de usuario */}
       <TouchableOpacity onPress={() => toggleModal('user')} style={styles.menubutton}>
         <Image
@@ -58,7 +77,13 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
                 <TouchableOpacity onPress={login} style={styles.menuItem}>
                   <Text style={styles.menuText}>Cerrar sesión</Text>
                 </TouchableOpacity>
-              </>
+                <TouchableOpacity onPress={Quejas} style={styles.menuItem}>
+                  <Text style={styles.menuText}> Quejas</Text>
+                </TouchableOpacity>
+               <TouchableOpacity onPress={Info} style={styles.menuItem}>
+               <Text style={styles.menuText}> Mas Info</Text>
+             </TouchableOpacity>
+           </>
             )}
             {/* Opciones del menú de configuración */}
             {selectedMenu === 'settings' && (
@@ -88,59 +113,59 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
 // Estilos del componente
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row', // Coloca los botones en fila.
-    justifyContent: 'space-between', // Espacia uniformemente entre los botones.
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
     alignItems: 'center',
     padding: 10,
   },
   darkContainer: {
-    backgroundColor: '#1c1c1c', // Fondo oscuro para el modo oscuro.
+    backgroundColor: '#1c1c1c', // Fondo oscuro para el modo oscuro
   },
   lightContainer: {
-    backgroundColor: '#f0f0f0', // Fondo claro para el modo claro.
+    backgroundColor: '#f0f0f0', // Fondo claro para el modo claro
   },
   menubutton: {
     padding: 10,
   },
   icon: {
-    width: 30, // Tamaño del ícono.
+    width: 30, // Tamaño del ícono
     height: 30,
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Fondo translúcido para el modal.
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Fondo translúcido para el modal
     justifyContent: 'center',
     alignItems: 'center',
   },
   menu: {
-    backgroundColor: '#fff', // Fondo del menú dentro del modal.
+    backgroundColor: '#fff', // Fondo del menú dentro del modal
     padding: 20,
     borderRadius: 10,
     width: '80%',
-    elevation: 5, // Sombra para Android.
-    shadowColor: '#000', // Sombra para iOS.
+    elevation: 5, // Sombra para Android
+    shadowColor: '#000', // Sombra para iOS
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
   menuItem: {
-    paddingVertical: 15, // Espaciado vertical entre elementos.
+    paddingVertical: 15, // Espaciado vertical entre elementos
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
   menuText: {
     fontSize: 16,
-    color: '#333', // Color del texto para el menú.
+    color: '#333', // Color del texto para el menú
   },
   closeButton: {
     marginTop: 10,
     paddingVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#ff4757', // Fondo del botón "Cerrar".
+    backgroundColor: '#ff4757', // Fondo del botón "Cerrar"
     borderRadius: 5,
   },
   closeButtonText: {
-    color: '#fff', // Color del texto del botón.
+    color: '#fff', // Color del texto del botón
     fontWeight: 'bold',
   },
 });
