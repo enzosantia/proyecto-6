@@ -1,5 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Image, Dimensions } from 'react-native';
+import React, { useState } from 'react';
 
 import Login from "../Pages/Ingreso";
 import Registro from "../Pages/Registro";
@@ -7,9 +8,9 @@ import Pan1 from "../Pages/PantUsuarios";
 import Pan2 from "../Pages/PanAdmins"; 
 import RegistroAdmins from "../Pages/RegistroAdmins";
 import AdministratorsScreen from "../Pages/ModificacionAdmins";
-import React, { useState } from 'react';
-
-import UbicacionDRON from '../Script/Dron/UbicacionDRON'
+import UbicacionDRON from '../Script/Dron/UbicacionDRON';
+import Ayuda from "../Pages/Ayuda";
+import ListarAdmis from "../Pages/ListarAdmin";
 
 export default function MyStack() {  
   // Estado para el modo oscuro
@@ -35,7 +36,7 @@ export default function MyStack() {
             />
           ),
           headerTitleAlign: 'center', 
-          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' }, // Cambia el color de fondo según el modo
+          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }} />
       <Stack.Screen name="Registro" component={Registro} options={{
           headerTitle: () => (
@@ -48,7 +49,7 @@ export default function MyStack() {
           headerTitleAlign: 'center', 
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }} />
-              <Stack.Screen name="Pantallaprincipal" component={Pan1} options={{
+      <Stack.Screen name="Pantallaprincipal" component={Pan1} options={{
           headerTitle: () => (
             <Image
               source={{ uri: '../assets/favicon.png' }}
@@ -95,7 +96,23 @@ export default function MyStack() {
           headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
         }}
       />
-    <Stack.Screen name="test" component={UbicacionDRON}/>
+      <Stack.Screen name="test" component={UbicacionDRON} />
+      <Stack.Screen name="Ayuda" component={Ayuda} options={{
+          headerTitle: "Ayuda",
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
+        }} />
+        <Stack.Screen name="ListarAdmin" component={ListarAdmis} options={{
+          headerTitle: () => (
+            <Image
+              source={{ uri: '../assets/favicon.png' }}
+              style={{ width: ancho, height: alto }}
+              resizeMode="contain"
+            />
+          ),
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
+        }}/>
     </Stack.Navigator>
   );
 }

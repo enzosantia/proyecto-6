@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { View, TouchableOpacity, StyleSheet, Image, Modal, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
+import Ayuda from '../Pages/Ayuda';
 
 export const Encab = ({ darkMode, toggleDarkMode }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(null);
+
+  const navigation = useNavigation();
 
   // Función para alternar la visibilidad del modal y establecer el menú seleccionado.
   const toggleModal = (menu) => {
@@ -14,6 +18,11 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
   // Función para navegar hacia la pantalla de loguin.
   const login = () => {
     navigation.navigate('Logueo');
+  };
+
+  // Función para navegar hacia la pantalla de Ayuda.
+  const goToAyuda = () => {
+    navigation.navigate('Ayuda');
   };
 
   return (
@@ -59,6 +68,9 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
                   <Text style={styles.menuText}>
                     {darkMode ? 'Modo claro' : 'Modo oscuro'}
                   </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={goToAyuda} style={styles.menuItem}>
+                  <Text style={styles.menuText}>Ayuda</Text>
                 </TouchableOpacity>
               </>
             )}
