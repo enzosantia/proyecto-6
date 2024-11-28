@@ -1,56 +1,46 @@
 import React, { useState } from 'react'; 
 import { View, TouchableOpacity, StyleSheet, Image, Modal, Text } from 'react-native';
-<<<<<<< Updated upstream
-import { useNavigation } from '@react-navigation/native'; 
-import Ayuda from '../Pages/Ayuda';
-=======
 import { useNavigation } from '@react-navigation/native';
->>>>>>> Stashed changes
 
 export const Encab = ({ darkMode, toggleDarkMode }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(null);
-
-<<<<<<< Updated upstream
   const navigation = useNavigation();
 
-  // Función para alternar la visibilidad del modal y establecer el menú seleccionado.
-=======
   // Función para alternar la visibilidad del modal y establecer el menú seleccionado
->>>>>>> Stashed changes
   const toggleModal = (menu) => {
     setSelectedMenu(menu);
     setModalVisible(!modalVisible);
   };
-  const navigation = useNavigation(); 
-  // Función para navegar hacia la pantalla de loguin
+
+  // Funciones de navegación
   const login = () => {
+    setModalVisible(false);
     navigation.navigate('Logueo');
   };
-<<<<<<< Updated upstream
 
-  // Función para navegar hacia la pantalla de Ayuda.
+  const Quejas = () => {
+    setModalVisible(false);
+    navigation.navigate('Quejas');
+  };
+
+  const Info = () => {
+    setModalVisible(false);
+    navigation.navigate('Info');
+  };
+
   const goToAyuda = () => {
+    setModalVisible(false);
     navigation.navigate('Ayuda');
   };
 
-=======
-  const Quejas = () => {
-    navigation.navigate('Quejas'); 
-  };
-  const Info = () => {
-    setModalVisible(false); 
-    navigation.navigate('Info');
-  };
->>>>>>> Stashed changes
   return (
-    <View 
+    <View
       style={[
-        styles.container, 
+        styles.container,
         darkMode ? styles.darkContainer : styles.lightContainer // Cambia el estilo según el modo
       ]}
     >
-
       {/* Botón del menú de usuario */}
       <TouchableOpacity onPress={() => toggleModal('user')} style={styles.menubutton}>
         <Image
@@ -67,7 +57,7 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
         />
       </TouchableOpacity>
 
-      {/* Modal (es un menu emergente) para mostrar opciones de usuario o configuración */}
+      {/* Modal para mostrar opciones de usuario o configuración */}
       <Modal visible={modalVisible} transparent={true} animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.menu}>
@@ -78,17 +68,17 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
                   <Text style={styles.menuText}>Cerrar sesión</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={Quejas} style={styles.menuItem}>
-                  <Text style={styles.menuText}> Quejas</Text>
+                  <Text style={styles.menuText}>Quejas</Text>
                 </TouchableOpacity>
-               <TouchableOpacity onPress={Info} style={styles.menuItem}>
-               <Text style={styles.menuText}> Mas Info</Text>
-             </TouchableOpacity>
-           </>
+                <TouchableOpacity onPress={Info} style={styles.menuItem}>
+                  <Text style={styles.menuText}>Más Info</Text>
+                </TouchableOpacity>
+              </>
             )}
+
             {/* Opciones del menú de configuración */}
             {selectedMenu === 'settings' && (
               <>
-                {/* Alternar entre modo oscuro y claro */}
                 <TouchableOpacity onPress={toggleDarkMode} style={styles.menuItem}>
                   <Text style={styles.menuText}>
                     {darkMode ? 'Modo claro' : 'Modo oscuro'}
@@ -99,6 +89,7 @@ export const Encab = ({ darkMode, toggleDarkMode }) => {
                 </TouchableOpacity>
               </>
             )}
+
             {/* Botón para cerrar el modal */}
             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Cerrar</Text>
