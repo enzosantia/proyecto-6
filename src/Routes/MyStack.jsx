@@ -14,6 +14,9 @@ import AdministratorsScreen from "../Pages/ModificacionAdmins";
 import UbicacionDRON from '../Script/Dron/UbicacionDRON';
 import Ayuda from "../Pages/Ayuda";
 import ListarAdmis from "../Pages/ListarAdmin";
+import ForgotPassword from '../Pages/ForgotPassword'; // Pantalla de recuperación de contraseña
+import ListarUsuarios from "../Pages/ListarUsers";
+import ActualizarUsers from "../Pages/ModificarUsers";
 
 export default function MyStack() {
   // Estado para el modo oscuro
@@ -50,6 +53,13 @@ export default function MyStack() {
             resizeMode="contain"
           />
         ),
+        headerTitleAlign: 'center',
+        headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
+      }} />
+
+      {/* Pantalla de Recuperación de Contraseña */}
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{
+        headerTitle: "Recuperar Contraseña",
         headerTitleAlign: 'center',
         headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
       }} />
@@ -143,7 +153,28 @@ export default function MyStack() {
         headerTitleAlign: 'center',
         headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
       }} />
-
+      <Stack.Screen name="ListarUsuarios" component={ListarUsuarios} options={{
+        headerTitle: () => (
+          <Image
+            source={{ uri: '../assets/favicon.png' }}
+            style={{ width: ancho, height: alto }}
+            resizeMode="contain"
+          />
+        ),
+        headerTitleAlign: 'center',
+        headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
+      }} />
+      <Stack.Screen name="ActualizarUsers" component={ActualizarUsers} options={{
+        headerTitle: () => (
+          <Image
+            source={{ uri: '../assets/favicon.png' }}
+            style={{ width: ancho, height: alto }}
+            resizeMode="contain"
+          />
+        ),
+        headerTitleAlign: 'center',
+        headerStyle: { backgroundColor: darkMode ? '#1c1c1c' : '#cccccc40' },
+      }} />
       {/* Información */}
       <Stack.Screen name="Info" component={Info} options={{
         headerTitle: () => (

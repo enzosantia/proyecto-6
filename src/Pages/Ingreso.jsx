@@ -108,10 +108,13 @@ export default function Login() {
               <Text style={styles.textBoton}>Registrarse</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.botonReset} 
-            onPress={handlePasswordReset}>
-            <Text style={styles.resetText}>Recuperar contraseña</Text>
-          </TouchableOpacity>
+          <TouchableOpacity
+  style={styles.botonReset}
+  onPress={() => navigation.navigate('ForgotPassword')} // Navegación
+>
+  <Text style={styles.resetText}>Recuperar contraseña</Text>
+</TouchableOpacity>
+
         </View>
       </View>
     </BackgroundImage>
